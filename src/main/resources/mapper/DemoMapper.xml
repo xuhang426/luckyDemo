@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.DemoMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.DemoModel">
+      <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cs" jdbcType="VARCHAR" property="cs" />
+    <result column="mtmc" jdbcType="VARCHAR" property="mtmc" />
+    <result column="mtsx" jdbcType="VARCHAR" property="mtsx" />
+    <result column="mtlx" jdbcType="VARCHAR" property="mtlx" />
+    <result column="mtgs" jdbcType="VARCHAR" property="mtgs" />
+    <result column="ptyxl" jdbcType="VARCHAR" property="ptyxl" />
+    <result column="xm" jdbcType="VARCHAR" property="xm" />
+    <result column="xb" jdbcType="VARCHAR" property="xb" />
+    <result column="zw" jdbcType="VARCHAR" property="zw" />
+    <result column="mtjb" jdbcType="VARCHAR" property="mtjb" />
+    <result column="yhd" jdbcType="VARCHAR" property="yhd" />
+    <result column="scbd" jdbcType="VARCHAR" property="scbd" />
+    <result column="sjhm" jdbcType="VARCHAR" property="sjhm" />
+    <result column="yx" jdbcType="VARCHAR" property="yx" />
+    <result column="sfzhm" jdbcType="VARCHAR" property="sfzhm" />
+    <result column="csnf" jdbcType="VARCHAR" property="csnf" />
+    <result column="yf" jdbcType="VARCHAR" property="yf" />
+    <result column="rq" jdbcType="VARCHAR" property="rq" />
+    <result column="csnyr" jdbcType="VARCHAR" property="csnyr" />
+    <result column="jtqk" jdbcType="VARCHAR" property="jtqk" />
+    <result column="gzdz" jdbcType="VARCHAR" property="gzdz" />
+    <result column="jtdz" jdbcType="VARCHAR" property="jtdz" />
+    <result column="fzhm" jdbcType="VARCHAR" property="fzhm" />
+    <result column="xqah" jdbcType="VARCHAR" property="xqah" />
+    <result column="gchd" jdbcType="VARCHAR" property="gchd" />
+    <result column="bdsl" jdbcType="VARCHAR" property="bdsl" />
+    <result column="yycx" jdbcType="VARCHAR" property="yycx" />
+    <result column="hzje" property="hzje" />
+    <result column="bz" jdbcType="VARCHAR" property="bz" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+		id,cs,mtmc,mtsx,mtlx,mtgs,ptyxl,xm,xb,zw,mtjb,yhd,scbd,sjhm,yx,sfzhm,csnf,yf,rq,csnyr,jtqk,gzdz,jtdz,fzhm,xqah,gchd,bdsl,yycx,hzje,bz
+	</sql>
+
+
+    <insert id="insertSelective" parameterType="com.example.demo.model.DemoModel" >
+        insert into tb_test
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+
+            <if test="cs != null" >
+                cs,
+            </if>
+            <if test="mtmc != null" >
+                mtmc,
+            </if>
+            <if test="mtsx != null" >
+                mtsx,
+            </if>
+            <if test="mtlx != null" >
+                mtlx,
+            </if>
+            <if test="mtgs != null" >
+                mtgs,
+            </if>
+            <if test="ptyxl != null" >
+                ptyxl,
+            </if>
+            <if test="xm != null" >
+                xm,
+            </if>
+            <if test="xb != null" >
+                xb,
+            </if>
+            <if test="zw != null" >
+                zw,
+            </if>
+            <if test="mtjb != null" >
+                mtjb,
+            </if>
+            <if test="yhd != null" >
+                yhd,
+            </if>
+            <if test="scbd != null" >
+                scbd,
+            </if>
+            <if test="sjhm != null" >
+                sjhm,
+            </if>
+            <if test="yx != null" >
+                yx,
+            </if>
+            <if test="sfzhm != null" >
+                sfzhm,
+            </if>
+            <if test="csnf != null" >
+                csnf,
+            </if>
+            <if test="yf != null" >
+                yf,
+            </if>
+            <if test="rq != null" >
+                rq,
+            </if>
+            <if test="csnyr != null" >
+                csnyr,
+            </if>
+            <if test="jtqk != null" >
+                jtqk,
+            </if>
+            <if test="gzdz != null" >
+                gzdz,
+            </if>
+            <if test="jtdz != null" >
+                jtdz,
+            </if>
+            <if test="fzhm != null" >
+                fzhm,
+            </if>
+            <if test="xqah != null" >
+                xqah,
+            </if>
+            <if test="gchd != null" >
+                gchd,
+            </if>
+            <if test="bdsl != null" >
+                bdsl,
+            </if>
+            <if test="yycx != null" >
+                yycx,
+            </if>
+            <if test="hzje != null" >
+                hzje,
+            </if>
+            <if test="bz != null" >
+                bz,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="cs != null" >
+                #{cs,jdbcType=VARCHAR},
+            </if>
+            <if test="mtmc != null" >
+                #{mtmc,jdbcType=VARCHAR},
+            </if>
+            <if test="mtsx != null" >
+                #{mtsx,jdbcType=VARCHAR},
+            </if>
+            <if test="mtlx != null" >
+                #{mtlx,jdbcType=VARCHAR},
+            </if>
+            <if test="mtgs != null" >
+                #{mtgs,jdbcType=VARCHAR},
+            </if>
+            <if test="ptyxl != null" >
+                #{ptyxl,jdbcType=VARCHAR},
+            </if>
+            <if test="xm != null" >
+                #{xm,jdbcType=VARCHAR},
+            </if>
+            <if test="xb != null" >
+                #{xb,jdbcType=VARCHAR},
+            </if>
+            <if test="zw != null" >
+                #{zw,jdbcType=VARCHAR},
+            </if>
+            <if test="mtjb != null" >
+                #{mtjb,jdbcType=VARCHAR},
+            </if>
+            <if test="yhd != null" >
+                #{yhd,jdbcType=VARCHAR},
+            </if>
+            <if test="scbd != null" >
+                #{scbd,jdbcType=VARCHAR},
+            </if>
+            <if test="sjhm != null" >
+                #{sjhm,jdbcType=VARCHAR},
+            </if>
+            <if test="yx != null" >
+                #{yx,jdbcType=VARCHAR},
+            </if>
+            <if test="sfzhm != null" >
+                #{sfzhm,jdbcType=VARCHAR},
+            </if>
+            <if test="csnf != null" >
+                #{csnf,jdbcType=VARCHAR},
+            </if>
+            <if test="yf != null" >
+                #{yf,jdbcType=VARCHAR},
+            </if>
+            <if test="rq != null" >
+                #{rq,jdbcType=VARCHAR},
+            </if>
+            <if test="csnyr != null" >
+                #{csnyr,jdbcType=VARCHAR},
+            </if>
+            <if test="jtqk != null" >
+                #{jtqk,jdbcType=VARCHAR},
+            </if>
+            <if test="gzdz != null" >
+                #{gzdz,jdbcType=VARCHAR},
+            </if>
+            <if test="jtdz != null" >
+                #{jtdz,jdbcType=VARCHAR},
+            </if>
+            <if test="fzhm != null" >
+                #{fzhm,jdbcType=VARCHAR},
+            </if>
+            <if test="xqah != null" >
+                #{xqah,jdbcType=VARCHAR},
+            </if>
+            <if test="gchd != null" >
+                #{gchd,jdbcType=VARCHAR},
+            </if>
+            <if test="bdsl != null" >
+                #{bdsl,jdbcType=VARCHAR},
+            </if>
+            <if test="yycx != null" >
+                #{yycx,jdbcType=VARCHAR},
+            </if>
+            <if test="hzje != null" >
+                #{hzje },
+            </if>
+            <if test="bz != null" >
+                #{bz,jdbcType=VARCHAR},
+            </if>
+
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.DemoModel" >
+        update tb_test
+        <set >
+            <if test="id != null" >
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="cs != null" >
+                cs = #{cs,jdbcType=VARCHAR},
+            </if>
+            <if test="mtmc != null and mtmc !=''" >
+                mtmc = #{mtmc,jdbcType=VARCHAR},
+            </if>
+
+            <if test="mtsx != null" >
+                mtsx = #{mtsx,jdbcType=VARCHAR},
+            </if>
+            <if test="mtlx != null" >
+                mtlx = #{mtlx,jdbcType=VARCHAR},
+            </if>
+            <if test="mtgs != null" >
+                mtgs = #{mtgs,jdbcType=VARCHAR},
+            </if>
+            <if test="ptyxl != null" >
+                ptyxl = #{ptyxl,jdbcType=VARCHAR},
+            </if>
+            <if test="xm != null" >
+                xm = #{xm,jdbcType=VARCHAR},
+            </if>
+            <if test="xb != null" >
+                xb = #{xb,jdbcType=VARCHAR},
+            </if>
+            <if test="zw != null" >
+                zw = #{zw,jdbcType=VARCHAR},
+            </if>
+            <if test="mtjb != null" >
+                mtjb = #{mtjb,jdbcType=VARCHAR},
+            </if>
+            <if test="yhd != null" >
+                yhd = #{yhd,jdbcType=VARCHAR},
+            </if>
+            <if test="scbd != null" >
+                scbd = #{scbd,jdbcType=VARCHAR},
+            </if>
+            <if test="sjhm != null" >
+                sjhm = #{sjhm,jdbcType=VARCHAR},
+            </if>
+            <if test="yx != null" >
+                yx = #{yx,jdbcType=VARCHAR},
+            </if>
+            <if test="sfzhm != null" >
+                sfzhm = #{sfzhm,jdbcType=VARCHAR},
+            </if>
+            <if test="csnf != null" >
+                csnf = #{csnf,jdbcType=VARCHAR},
+            </if>
+            <if test="yf != null" >
+                yf = #{yf,jdbcType=VARCHAR},
+            </if>
+            <if test="rq != null" >
+                rq = #{rq,jdbcType=VARCHAR},
+            </if>
+            <if test="csnyr != null" >
+                csnyr = #{csnyr,jdbcType=VARCHAR},
+            </if>
+            <if test="jtqk != null" >
+                jtqk = #{jtqk,jdbcType=VARCHAR},
+            </if>
+            <if test="gzdz != null" >
+                gzdz = #{gzdz,jdbcType=VARCHAR},
+            </if>
+            <if test="jtdz != null" >
+                jtdz = #{jtdz,jdbcType=VARCHAR},
+            </if>
+            <if test="fzhm != null" >
+                fzhm = #{fzhm,jdbcType=VARCHAR},
+            </if>
+            <if test="xqah != null" >
+                xqah = #{xqah,jdbcType=VARCHAR},
+            </if>
+            <if test="gchd != null" >
+                gchd = #{gchd,jdbcType=VARCHAR},
+            </if>
+            <if test="bdsl != null" >
+                bdsl = #{bdsl,jdbcType=VARCHAR},
+            </if>
+            <if test="yycx != null" >
+                yycx = #{yycx,jdbcType=VARCHAR},
+            </if>
+            <if test="hzje != null" >
+                hzje = #{hzje },
+            </if>
+            <if test="bz != null" >
+                bz = #{bz,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+<!--查询数据  带分页-->
+  <select id="queryTableList" resultType="com.example.demo.model.DemoModel"  parameterType="java.util.Map">
+    SELECT
+    *
+    FROM tb_test
+
+      <where>
+          <if test="cityInputId !=''  and cityInputId != null  ">
+              and cs like '%${cityInputId}%'
+          </if>
+          <if test="nameInputId !=''  and nameInputId != null  ">
+              and xm like '%${nameInputId}%'
+          </if>
+          <!-- 6月内报道数量&gt;= 大于等于 &lt;=小于等于 -->
+          <if test="sixTotalStartId != ''  and sixTotalEndId != '' and sixTotalStartId != sixTotalEndId">
+              and bdsl &gt;= #{sixTotalStartId} and
+              bdsl &lt;= #{sixTotalEndId}
+          </if>
+          <if test="sixTotalStartId != '' and sixTotalEndId == ''">
+              and bdsl &gt;= #{sixTotalStartId}
+          </if>
+
+          <if test="sixTotalEndId != '' and sixTotalStartId == ''">
+              and bdsl &lt;= #{sixTotalEndId}
+          </if>
+
+          <if test="mediaNameInputId !=''  and mediaNameInputId != null  ">
+              and mtmc like '%${mediaNameInputId}%'
+          </if>
+
+
+          <!-- &gt;= 大于等于 &lt;=小于等于 -->
+          <if test="annualInputStartId != ''  and annualInputEndId != '' and annualInputStartId != annualInputEndId">
+              and yycx &gt;= #{annualInputStartId} and
+              yycx &lt;= #{annualInputEndId}
+          </if>
+          <if test="annualInputStartId != '' and annualInputEndId == ''">
+              and yycx &gt;= #{annualInputStartId}
+          </if>
+          <if test="annualInputEndId != '' and annualInputStartId == ''">
+              and yycx &lt;= #{annualInputEndId}
+          </if>
+          <if test="jobInputId !=''  and jobInputId != null  ">
+              and zw like '%${jobInputId}%'
+          </if>
+
+          <!-- &gt;= 大于等于 &lt;=小于等于 -->
+          <if test="annualMediaStartId != ''  and annualMediaEndId != '' and annualMediaStartId != annualMediaEndId">
+              and hzje &gt;= #{annualMediaStartId} and
+              hzje &lt;= #{annualMediaEndId}
+          </if>
+          <if test="annualMediaStartId != '' and annualMediaEndId == ''">
+              and hzje &gt;= #{annualMediaStartId}
+          </if>
+          <if test="annualMediaEndId != '' and annualMediaStartId == ''">
+              and hzje &lt;= #{annualMediaEndId}
+          </if>
+          <if test="mediaTypeId != '' and mediaTypeId != null">
+              and mtlx = #{mediaTypeId}
+          </if>
+
+          <if test=" mediaTypeId != '' and mediaRankInputId != null  ">
+              and mtjb like '%${mediaRankInputId}%'
+          </if>
+
+
+          <if test="sexId != '' and sexId != null">
+              and xb = #{sexId}
+          </if>
+          <if test="mediaAttributeId != '' and mediaAttributeId != null">
+              and mtsx = #{mediaAttributeId}
+          </if>
+
+          <!-- &gt;= 大于等于 &lt;=小于等于 -->
+          <if test="timeStar != ''  and timeEnd != '' and timeStar != timeEnd">
+              and csnf &gt;= #{timeStar} and
+              csnf &lt;= #{timeEnd}
+          </if>
+          <if test="timeStar != '' and timeEnd == ''">
+              and csnf &gt;= #{timeStar}
+          </if>
+          <if test="timeEnd != '' and timeStar == ''">
+              and csnf &lt;= #{timeEnd}
+          </if>
+          <if test="phoneInputId !=''  and phoneInputId != null  ">
+              and sjhm like '%${phoneInputId}%'
+          </if>
+
+
+      </where>
+    <if test="null != beginNumber and null != limit">
+      LIMIT #{beginNumber},#{limit}
+    </if>
+
+  </select>
+
+
+    <select id="queryCount" resultType="int"  parameterType="java.util.Map">
+        SELECT
+       count(*)
+        FROM tb_test
+        <where>
+            <if test="cityInputId !=''  and cityInputId != null  ">
+                and cs like '%${cityInputId}%'
+            </if>
+            <if test="nameInputId !=''  and nameInputId != null  ">
+                and xm like '%${nameInputId}%'
+            </if>
+            <!-- 6月内报道数量&gt;= 大于等于 &lt;=小于等于 -->
+            <if test="sixTotalStartId != ''  and sixTotalEndId != '' and sixTotalStartId != sixTotalEndId">
+                and bdsl &gt;= #{sixTotalStartId} and
+                bdsl &lt;= #{sixTotalEndId}
+            </if>
+            <if test="sixTotalStartId != '' and sixTotalEndId == ''">
+                and bdsl &gt;= #{sixTotalStartId}
+            </if>
+
+            <if test="sixTotalEndId != '' and sixTotalStartId == ''">
+                and bdsl &lt;= #{sixTotalEndId}
+            </if>
+
+            <if test="mediaNameInputId !=''  and mediaNameInputId != null  ">
+                and mtmc like '%${mediaNameInputId}%'
+            </if>
+
+
+            <!-- &gt;= 大于等于 &lt;=小于等于 -->
+            <if test="annualInputStartId != ''  and annualInputEndId != '' and annualInputStartId != annualInputEndId">
+                and yycx &gt;= #{annualInputStartId} and
+                yycx &lt;= #{annualInputEndId}
+            </if>
+            <if test="annualInputStartId != '' and annualInputEndId == ''">
+                and yycx &gt;= #{annualInputStartId}
+            </if>
+            <if test="annualInputEndId != '' and annualInputStartId == ''">
+                and yycx &lt;= #{annualInputEndId}
+            </if>
+            <if test="jobInputId !=''  and jobInputId != null  ">
+                and zw like '%${jobInputId}%'
+            </if>
+
+            <!-- &gt;= 大于等于 &lt;=小于等于 -->
+            <if test="annualMediaStartId != ''  and annualMediaEndId != '' and annualMediaStartId != annualMediaEndId">
+                and hzje &gt;= #{annualMediaStartId} and
+                hzje &lt;= #{annualMediaEndId}
+            </if>
+            <if test="annualMediaStartId != '' and annualMediaEndId == ''">
+                and hzje &gt;= #{annualMediaStartId}
+            </if>
+            <if test="annualMediaEndId != '' and annualMediaStartId == ''">
+                and hzje &lt;= #{annualMediaEndId}
+            </if>
+            <if test="mediaTypeId != '' and mediaTypeId != null">
+                and mtlx = #{mediaTypeId}
+            </if>
+
+            <if test=" mediaTypeId != '' and mediaRankInputId != null  ">
+                and mtjb like '%${mediaRankInputId}%'
+            </if>
+            <if test="sexId != '' and sexId != null">
+                and xb = #{sexId}
+            </if>
+            <if test="mediaAttributeId != '' and mediaAttributeId != null">
+                and mtsx = #{mediaAttributeId}
+            </if>
+
+            <!-- &gt;= 大于等于 &lt;=小于等于 -->
+            <if test="timeStar != ''  and timeEnd != '' and timeStar != timeEnd">
+                and csnf &gt;= #{timeStar} and
+                csnf &lt;= #{timeEnd}
+            </if>
+            <if test="timeStar != '' and timeEnd == ''">
+                and csnf &gt;= #{timeStar}
+            </if>
+            <if test="timeEnd != '' and timeStar == ''">
+                and csnf &lt;= #{timeEnd}
+            </if>
+            <if test="phoneInputId !=''  and phoneInputId != null  ">
+                and sjhm like  '%${phoneInputId}%'
+            </if>
+
+
+        </where>
+
+    </select>
+<!--删除 OR  批量删除-->
+  <delete id="deleteByPrimaryKey" parameterType="java.util.Map" >
+    delete from tb_test   where   id  in
+    <foreach collection="listParam" open="(" close=")" separator="," item="item" index="index">
+      #{item}
+    </foreach>
+  </delete>
+
+
+
+
+    <select id="exportBatch" resultType="com.example.demo.model.DemoModel"  parameterType="java.util.Map">
+        SELECT
+        *
+        FROM tb_test  where   id  in
+        <foreach collection="listParam" open="(" close=")" separator="," item="item" index="index">
+            #{item}
+        </foreach>
+
+    </select>
+
+
+    <!-- 获城市统计值 -->
+    <select id="queryListEchartBycs" resultType="map">
+        select cs as name ,count(id) as value  from tb_test   where  1=1  group by cs
+    </select>
+
+
+    <!-- 媒体类型统计值 -->
+    <select id="queryListEchartBymtlx" resultType="map">
+        select mtlx as name ,count(id) as value  from tb_test  where  1=1  group by mtlx
+    </select>
+
+    <!-- 媒体属性统计值 -->
+    <select id="queryListEchartBymtsx" resultType="map">
+        select mtsx as name ,count(id) as value  from tb_test  where  1=1   group by  mtsx
+    </select>
+
+
+
+
+
+    <!-- 年度活动邀约出席统计值 -->
+    <select id="queryListEchartByyycx" resultType="map">
+        select cs as name ,sum(yycx) as num  from tb_test  where  1=1   group by  cs
+    </select>
+
+    <!-- 媒体属性统计值 -->
+    <select id="queryListEchartByhzje" resultType="map">
+        select cs as name ,sum(hzje) as num  from tb_test  where  1=1   group by  cs
+    </select>
+
+
+
+
+
+
+    <select id="qyeryExportRandom" resultType="com.example.demo.model.DemoModel"  parameterType="java.util.Map">
+        SELECT
+        *
+        FROM tb_test  where   id  in
+        <foreach collection="listParam" open="(" close=")" separator="," item="item" index="index">
+            #{item}
+        </foreach>
+
+    </select>
+
+
+
+    <select id="qyeryExportAll" resultType="com.example.demo.model.DemoModel"  >
+        SELECT      *  FROM tb_test
+
+    </select>
+
+
+
+
+
+
+</mapper>
+

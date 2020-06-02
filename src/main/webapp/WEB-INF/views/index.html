@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>Bootstrap分页实例</title>
+		<!--
+        	作者：offline
+        	时间：2020-05-23
+        	描述：内部引用js、css
+       -->
+		<link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+		<!--<script src="js/jQuery/jquery-2.1.4.min.js"></script>-->
+		<script src="js/bootstrap/js/bootstrap-paginator.min.js"></script>
+		<!--<script src="js/bootstrap/js/bootstrap.min.js"></script>-->
+		<!-- 如果要实现交互,需要引入jq,bootstrap对交互的实现要jq实现 -->
+		<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+		<!-- table表格 -->
+		<script src="js/bootstrap/js/bootstrap-table.min.js"></script>
+		<script src="js/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+		<link href="js/bootstrap/css/bootstrap-table.min.css" rel="stylesheet" />
+		<!--
+        	作者：offline
+        	时间：2020-05-23
+        	描述：外网引入js、css
+        -->
+		<!--<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">-->
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		<!-- 局部css样式 -->
+		<style type="text/css">
+			#queryDiv {
+				margin-right: auto;
+				margin-left: auto;
+				width: 600px;
+				padding-left: 1540px;
+			}
+			
+			#textInput {
+				margin-top: 10px;
+			}
+			
+			#tableResult {
+				margin-right: auto;
+				margin-left: auto;
+				width: 100%;
+			}
+			
+			table {
+				border: 0px solid #002A80;
+			}
+			
+			table td {
+				border: 0px solid #005580;
+			}
+			
+			.bs-example {
+				/*float: left;*/
+				display: inline;
+			}
+			
+			.modal.fade.in {
+				width: 1200px;
+				height: 860px;
+				top: 5%;
+				left: 35%;
+			}
+			
+			.modal-body {
+				max-height: 50%;
+			}
+			
+			.modal-footer {
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<p>&nbsp;&nbsp;</p>
+		<div class="panel-body" style="padding-bottom:0px;">
+			<div class="panel panel-default">
+				<!--<div class="panel-heading">查询条件</div>-->
+				<div class="panel-body">
+					<table style="width: 100%; margin-bottom: 20px;">
+						<tr class="firstRow">
+							<td width="231" valign="top">
+								<strong><span style="font-size: 20px;">媒体平台</span></strong>
+							</td>
+							<td width="231" valign="top">
+								<strong><span style="font-size: 20px;">媒体人</span></strong>
+							</td>
+							<td width="231" valign="top">
+								<strong><span style="font-size: 20px;">年度动态信息</span></strong>
+							</td>
+							<td width="231" valign="top"></td>
+						</tr>
+						<tr>
+							<td width="231" valign="top">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 城市：
+								<input id="cityInput" type="text" placeholder="" style="width: 120px;">
+							</td>
+							<td width="231" valign="top">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 姓名：
+								<input id="nameInput" type="text" placeholder="" style="width: 120px;">
+							</td>
+							<td width="231" valign="top">
+								出生年月：<input id="startNy" type="text" placeholder="" style="width: 120px;">至
+								<input id="endNy" type="text" placeholder="" style="width: 120px;">
+							</td>
+							<td width="231" valign="top">
+								6个月内报道数量：<input id="sixTotalStart" type="text" placeholder="" style="width: 120px;">至
+								<input id="sixTotalEnd" type="text" placeholder="" style="width: 120px;">
+							</td>
+						</tr>
+						<tr>
+							<td width="231" valign="top">
+								媒体名称：<input id="mediaNameInput" type="text" placeholder="" style="width: 120px;">
+							</td>
+							<td width="231" valign="top">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 性别：
+								<select id="sex" name="" class="selectpicker" style="width: 120px;">
+									<option>请选择</option>
+									<option value="0">男</option>
+									<option value="1">女</option>
+								</select>
+							</td>
+							<td width="231" valign="top">
+								手机号码：<input id="phoneInput" type="text" placeholder="" style="width: 120px;">
+							</td>
+							<td width="231" valign="top">
+								年度活动邀约出席：<input id="annualInputStart" type="text" placeholder="" style="width: 120px;">至
+								<input id="annualInputEnd" type="text" placeholder="" style="width: 120px;">
+							</td>
+						</tr>
+						<tr>
+							<td width="231" valign="top">
+								媒体类型：
+								<select id="mediaType" name="" class="selectpicker" style="width: 120px;">
+									<option>请选择</option>
+									<option value="0">广播</option>
+									<option value="1">短视频</option>
+								</select>
+							</td>
+							<td width="231" valign="top">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 职务：
+								<input id="jobInput" type="text" placeholder="" style="width: 120px;">
+							</td>
+							<td width="231" valign="top"></td>
+							<td width="231" valign="top">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 年度媒体合作：
+								<input id="annualMediaStart" type="text" placeholder="" style="width: 120px;">至
+								<input id="annualMediaEnd" type="text" placeholder="" style="width: 120px;">
+							</td>
+						</tr>
+						<tr>
+							<td width="231" valign="top">
+								媒体属性：
+								<select id="mediaAttribute" name="" class="selectpicker" style="width: 120px;">
+									<option>请选择</option>
+									<option value="0">党政</option>
+								</select>
+							</td>
+							<td width="231" valign="top">
+								媒体级别：<input id="mediaRankInput" type="text" placeholder="" style="width: 120px;">
+							</td>
+							<td width="231" valign="top"></td>
+							<td width="231" valign="top"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<p>
+			<div id="myButtons1" class="bs-example">
+				<button type="button" class="btn btn-warning" data-loading-text="Loading...">下载模板</button>
+			</div>
+			<div id="myButtons2" class="bs-example">
+				<button type="button" class="btn btn-primary" data-loading-text="Loading...">导入</button>
+			</div>
+			<div id="queryDiv" class="bs-example">
+				<!--<input id = "textInput" type="text" placeholder="" >-->
+				<button id="queryButton" class="btn btn-info" type="button">查询</button>
+				<button id="restButton" class="btn btn-primary" type="button">重置</button>
+				<button id="addButton" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addModal">新增</button>
+			</div>
+		</p>
+		<hr />
+
+		<!-- add模态框（Modal） -->
+		<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h4 class="modal-title" id="addModalLabel">
+							媒体库信息记录系统  /  新增信息
+						</h4>
+					</div>
+					<form onsubmit="return check()" target="_blank" method="post">
+						<div class="modal-body">
+							<!--
+                        	作者：offline
+                        	时间：2020-05-23
+                        	描述：核心内容 -add
+                       -->
+							<table style="width:100%;" cellpadding="2" cellspacing="0" border="0" class="ke-zeroborder" bordercolor="#000000">
+								<tbody>
+									<tr>
+										<td>
+											<h5>媒体平台信息</h5>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 城市：
+											<input id="cityInput" name="city" type="text" placeholder="" style="width: 120px;">
+										</td>
+										<td>
+											媒体名称：<input id="mediaNameInput" name="mediaName" type="text" placeholder="" style="width: 120px;">
+										</td>
+										<td>
+											&nbsp;&nbsp;&nbsp;&nbsp;媒体属性：
+											<select id="mediaAttribute" name="mediaAttribute" class="selectpicker" style="width: 120px;">
+												<option value="">请选择</option>
+												<option value="0">党政</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span style="color:#333333;font-family:&quot;font-size:20px;">媒体归属：</span>
+											<input id="" name="mediaBack" type="text" placeholder="" style="width: 120px;">
+										</td>
+										<td>
+											媒体类型：
+											<select id="mediaType" name="mediaType" class="selectpicker" style="width: 120px;">
+												<option value="">请选择</option>
+												<option value="0">广播</option>
+												<option value="1">短视频</option>
+											</select>
+										</td>
+										<td>
+											<span style="color:#333333;font-family:&quot;font-size:20px;">平台影响力：</span>
+											<input id="ptyxl" name="ptyxl" type="text" placeholder="" style="width: 120px;">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<h5>媒体人信息</h5>
+										</td>
+									</tr>
+									<tr>
+										<td style="padding-left: 38px;">
+											<span style="color:#333333;font-family:&quot;font-size:20px;">姓名：</span>
+											<input id="nameInput" name="nameInput" type="text" placeholder="" style="width: 120px;">
+										</td>
+										<td style="padding-left: 38px;">
+											<span style="color:#333333;font-family:&quot;font-size:20px;">性别：</span>
+											<select id="sex" name="sex" class="selectpicker" style="width: 120px;">
+												<option value="">请选择</option>
+												<option value="0">男</option>
+												<option value="1">女</option>
+											</select>
+										</td>
+										<td style="padding-left: 38px;">
+											<span style="color:#333333;font-family:&quot;font-size:20px;">职务：</span>
+											<input id="jobInput" name="job" type="text" placeholder="" style="width: 120px;">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											媒 体 级 别：<input id="mediaRankInput" name="mediaRank" type="text" placeholder="" style="width: 120px;">
+										</td>
+										<td>
+											<span style="color:#333333;font-family:&quot;font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;友好度：</span>
+											<input id="friendly" name="friendly" type="text" placeholder="" style="width: 120px;">
+										</td>
+										<td>
+											<span style="color:#333333;font-family:&quot;font-size:20px;">擅 长 报 道：</span>
+											<input id="scbd" name="scbd" type="text" placeholder="" style="width: 120px;">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											手 机 号 码：<input id="phoneInput" name="phone" type="text" placeholder="" style="width: 120px;">
+										</td>
+										<td style="padding-left: 38px;">
+											<span style="color:#333333;font-family:&quot;font-size:20px;">邮箱：</span>
+											<input id="email" name="email" type="text" placeholder="" style="width: 120px;">
+										</td>
+										<td>
+											<span style="color:#333333;font-family:&quot;font-size:20px;">身份证号码：</span>
+											<input id="idCard" name="idCard" type="text" placeholder="" style="width: 120px;">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span style="color:#333333;font-family:&quot;font-size:20px;">出生年月日：</span>
+											<input id="birthday" name="birthday" type="text" placeholder="" style="width: 120px;">
+										</td>
+										<td>
+											<span style="color:#333333;font-family:&quot;font-size:20px;">家 庭 情 况：</span>
+											<input id="family" name="family" type="text" placeholder="" style="width: 120px;">
+										</td>
+										<td>
+											<span style="color:#333333;font-family:&quot;font-size:20px;">高 层 互 动：</span>
+											<input id="gchd" name="gchd" type="text" placeholder="" style="width: 120px;">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span style="color:#333333;font-family:&quot;font-size:20px;">兴 趣 爱 好：</span>
+											<input id="hobby" name="hobby" type="text" placeholder="" style="width: 120px;">
+										</td>
+										<td>
+											<span style="color:#333333;font-family:&quot;font-size:20px;">服 装 号 码：</span>
+											<input id="dressNum" name="dressNum" type="text" placeholder="" style="width: 120px;">
+										</td>
+										<td>
+											<br />
+										</td>
+									</tr>
+									<tr>
+										<td colspan="3">
+											<span style="color:#333333;font-family:&quot;font-size:20px;">工 作 地 址：</span>
+											<input id="workAdress" name="workAdress" type="text" placeholder="" style="">
+										</td>
+									</tr>
+									<tr>
+										<td colspan="3">
+											<span style="color:#333333;font-family:&quot;font-size:20px;">家 庭 地 址：</span>
+											<input id="familyAdress" name="familyAdress" type="text" placeholder="" style="">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<h5>年度动态信息</h5>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span style="color:#333333;font-family:&quot;font-size:20px;">6个月内报道数量：</span>
+											<input id="sixNum" name="sixNum" type="text" placeholder="" style="width: 120px;">
+										</td>
+										<td>
+											<span style="color:#333333;font-family:&quot;font-size:20px;">年度活动邀约出席：</span>
+											<input id="annualInput" name="annualInput" type="text" placeholder="" style="width: 120px;">
+										</td>
+										<td>
+											<span style="color:#333333;font-family:&quot;font-size:20px;">年度媒体合作金额：</span>
+											<input id="annualMedia" name="annualMedia" type="text" placeholder="" style="width: 120px;">
+										</td>
+									</tr>
+									<tr>
+										<td colspan="3" style="padding-left: 80px;">
+											备注：<textarea id="remarks" name="remarks" rows="6" cols="82" style="width: 48%; overflow: auto; word-break: break-all;"></textarea>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+							<button type="submit" class="btn btn-primary">提交</button>
+						</div>
+					</form>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+
+		<!-- 主数据列表 -->
+		<!--<table id="tableRes" class="table"></table>-->
+		<div class="panel-body" style="padding-bottom:0px;">
+			<!--<div class="panel panel-default">
+            <div class="panel-heading">查询条件</div>
+            <div class="panel-body">
+                <form id="formSearch" class="form-horizontal">
+                    <div class="form-group" style="margin-top:15px">
+                        <label class="control-label col-sm-1" for="txt_search_departmentname">部门名称</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="txt_search_departmentname">
+                        </div>
+                        <label class="control-label col-sm-1" for="txt_search_statu">状态</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="txt_search_statu">
+                        </div>
+                        <div class="col-sm-4" style="text-align:left;">
+                            <button type="button" style="margin-left:50px" id="btn_query" class="btn btn-primary">查询</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>       -->
+
+			<div id="toolbar" class="btn-group">
+				<button id="btn_add" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+            </button>
+				<button id="btn_edit" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+            </button>
+				<button id="btn_delete" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+            </button>
+			</div>
+			<table id="tb_departments"></table>
+		</div>
+
+	</body>
+
+	<script type='text/javascript'>
+		// 下载模板，导入按钮
+		$(function() {
+			$("#myButtons1.btn").click(function() {
+				alert("aa");
+				$(this).button('toggle');
+			});
+		});
+		$(function() {
+			$("#myButtons2.btn").click(function() {
+				alert("bb");
+				// $(this).button('loading').delay(1000).queue(function() {});
+			});
+		});
+
+		// add 新增模态框
+		$(function() {
+			$('#addModal').modal('hide')
+		});
+		$(function() {
+			$('#addModal').on('hide.bs.modal', function() {
+				// 关闭后的回调函数
+			})
+		});
+
+		// 查询和重置值
+		$(document).ready(function() {
+			// 查詢
+			$("#queryButton").bind("click", function() {
+
+				var city = $("#cityInput").val();
+				var name = $("#nameInput").val();
+				var sny = $("#startNy").val();
+				var eny = $("#endNy").val();
+				var sts = $("#sixTotalStart").val();
+				var stn = $("#sixTotalEnd").val();
+				var mni = $("#mediaNameInput").val();
+				var sex = $("#sex").val();
+				var phone = $("#phoneInput").val();
+				var ais = $("#annualInputStart").val();
+				var aie = $("#annualInputEnd").val();
+				var mt = $("#mediaType").val();
+				var job = $("#jobInput").val();
+				var ams = $("#annualMediaStart").val();
+				var ame = $("#annualMediaEnd").val();
+				var ma = $("#mediaAttribute").val();
+				var mri = $("#mediaRankInput").val();
+
+				console.log(city, name, sny, eny, sts, stn, mni, sex, phone, ais, aie, mt, job, ams, ame, ma, mri);
+				alert(city);
+
+			});
+
+			// 重置
+			$("#restButton").bind("click", function() {
+				$("input[type=text]").val(''); // input文本框值清空
+				//			  $(".licontent input[type=hidden]").val('');			// input文本框隐藏值清空
+
+				// 对class属性的所有操作（清空没起作用）	
+				//  		$(".selectpicker").selectpicker('deselectAll');
+				//  		$(".selectpicker").selectpicker('refresh');
+
+				//回到初始状态
+				//对下拉框进行重置刷新
+				document.getElementById("sex").options.selectedIndex = 0;
+				document.getElementById("mediaType").options.selectedIndex = 0;
+				document.getElementById("mediaAttribute").options.selectedIndex = 0;
+				$("#sex").selectpicker('refresh');
+				$("#mediaType").selectpicker('refresh');
+				$("#mediaAttribute").selectpicker('refresh');
+
+			});
+		});
+
+		// 表单验证
+		function check() {
+			var model = {};
+			var x = $("form").serializeArray();
+			// var czr_seria = {};
+			$.each(x, function(i, field) {
+				// czr_seria += field.name + ":" + field.value + ",";
+				if('city' == field.name && '' == field.value) {
+					alert('城市不能为空');
+					return false;
+				} else if('mediaName' == field.name && '' == field.value) {
+					alert('媒体名称不能为空');
+					return false;
+				} else if('mediaAttribute' == field.name && '' == field.value) {
+					alert('请选择媒体属性');
+					return false;
+				} else if('mediaBack' == field.name && '' == field.value) {
+					alert('媒体归属不能为空');
+					return false;
+				} else if('mediaType' == field.name && '' == field.value) {
+					alert('媒体类型不能为空');
+					return false;
+				} else if('ptyxl' == field.name && '' == field.value) {
+					alert('平台影响力不能为空');
+					return false;
+				} else if('job' == field.name && '' == field.value) {
+					alert('姓名不能为空');
+					return false;
+				} else if('sex' == field.name && '' == field.value) {
+					alert('性别不能为空');
+					return false;
+				}
+				model[field.name] = field.value;
+			});
+			// console.log(model);
+			// console.log(czr_seria);
+			// 转json格式传
+			var propertyInfo = JSON.stringify(model);
+			console.log(propertyInfo);
+			//			city:1,mediaName:2,mediaAttribute:0,mediaBack:3,mediaType:1,ptyxl:4,nameInput:5,sex:,job:6,mediaRank:7,friendly:8,scbd:9,phone:10,email:11,idCard:12,birthday:13,family:14,gchd:15,hobby:16,dressNum:17,workAdress:18,familyAdress:19,sixNum:20,annualInput:21,annualMedia:22,remarks:23
+			return true;
+
+		}
+
+		$(function() {
+
+			//1.初始化Table
+			var oTable = new TableInit();
+			oTable.Init();
+
+			//2.初始化Button的点击事件
+			var oButtonInit = new ButtonInit();
+			oButtonInit.Init();
+
+		});
+
+		var TableInit = function() {
+			var oTableInit = new Object();
+			//初始化Table
+			oTableInit.Init = function() {
+				$('#tb_departments').bootstrapTable({
+					url: '/Home/GetDepartment', //请求后台的URL（*）
+					method: 'get', //请求方式（*）
+					toolbar: '#toolbar', //工具按钮用哪个容器
+					striped: true, //是否显示行间隔色
+					cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+					pagination: true, //是否显示分页（*）
+					sortable: false, //是否启用排序
+					sortOrder: "asc", //排序方式
+					queryParams: oTableInit.queryParams, //传递参数（*）
+					sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
+					pageNumber: 1, //初始化加载第一页，默认第一页
+					pageSize: 10, //每页的记录行数（*）
+					pageList: [10, 25, 50, 100], //可供选择的每页的行数（*）
+					search: true, //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+					strictSearch: true,
+					showColumns: true, //是否显示所有的列
+					showRefresh: true, //是否显示刷新按钮
+					minimumCountColumns: 2, //最少允许的列数
+					clickToSelect: true, //是否启用点击选中行
+					height: 500, //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+					uniqueId: "ID", //每一行的唯一标识，一般为主键列
+					showToggle: true, //是否显示详细视图和列表视图的切换按钮
+					cardView: false, //是否显示详细视图
+					detailView: false, //是否显示父子表
+					columns: [{
+						checkbox: true
+					}, {
+						field: 'Name',
+						title: '部门名称'
+					}, {
+						field: 'ParentName',
+						title: '上级部门'
+					}, {
+						field: 'Level',
+						title: '部门级别'
+					}, {
+						field: 'Desc',
+						title: '描述'
+					}, ]
+				});
+			};
+
+			//得到查询的参数
+			oTableInit.queryParams = function(params) {
+				var temp = { //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+					limit: params.limit, //页面大小
+					offset: params.offset, //页码
+					departmentname: $("#txt_search_departmentname").val(),
+					statu: $("#txt_search_statu").val()
+				};
+				return temp;
+			};
+			return oTableInit;
+		};
+
+		var ButtonInit = function() {
+			var oInit = new Object();
+			var postdata = {};
+
+			oInit.Init = function() {
+				//初始化页面上面的按钮事件
+			};
+
+			return oInit;
+		};
+	</script>
+
+</html>
